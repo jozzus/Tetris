@@ -1,10 +1,9 @@
-import random
 import sys
 import pygame
 from pygame.locals import *
 from pygame.math import Vector2 as vec
 from shape import Shape, Board
-
+from random import randint
 
 if __name__ == "__main__":
     pygame.init()
@@ -15,11 +14,11 @@ if __name__ == "__main__":
     FramePerSec = pygame.time.Clock()
     displaysurface = pygame.display.set_mode((WIDTH, HEIGHT))
     pygame.display.set_caption("Game")
-    random_x = random.randint(0, WIDTH // 25)
+    random_x = randint(0, WIDTH // 25)
     fig = Shape(25)
     board = Board(BOARD_SIZE)
     while not board.can_it_be_placed(fig.get_move_position(vec(random_x, 0))):
-        random_x = random.randint(0, WIDTH // 25)
+        random_x = randint(0, WIDTH // 25)
     fig.move(vec(random_x, 0))
 
     gameover = False
@@ -33,7 +32,7 @@ if __name__ == "__main__":
                 board.add(fig)
                 board.compact()
                 fig = Shape(25)
-                _random_position = vec(random.randint(0, int(BOARD_SIZE.x-4)), 0)
+                _random_position = vec(randint(0, int(BOARD_SIZE.x-4)), 0)
                 if board.can_it_be_placed(fig.get_move_position(_random_position)):
                     fig.move(_random_position)
                 else:
@@ -63,9 +62,9 @@ if __name__ == "__main__":
                         gameover = False
                         board = Board(BOARD_SIZE)
                         fig = Shape(25)
-                        random_x = random.randint(0, WIDTH // 25)
+                        random_x = randint(0, WIDTH // 25)
                         while not board.can_it_be_placed(fig.get_move_position(vec(random_x, 0))):
-                            random_x = random.randint(0, WIDTH // 25)
+                            random_x = randint(0, WIDTH // 25)
                         fig.move(vec(random_x, 0))
                         continue
                 if event.type == pygame.KEYUP:
@@ -90,9 +89,9 @@ if __name__ == "__main__":
                         gameover = False
                         board = Board(BOARD_SIZE)
                         fig = Shape(25)
-                        random_x = random.randint(0, WIDTH // 25)
+                        random_x = randint(0, WIDTH // 25)
                         while not board.can_it_be_placed(fig.get_move_position(vec(random_x, 0))):
-                            random_x = random.randint(0, WIDTH // 25)
+                            random_x = randint(0, WIDTH // 25)
                         fig.move(vec(random_x, 0))
                         continue
             displaysurface.fill((0, 0, 0))

@@ -1,6 +1,6 @@
-import random
 import pygame
 from pygame.math import Vector2 as vec
+from random import randint
 
 
 class Primitive(pygame.sprite.Sprite):
@@ -56,7 +56,7 @@ class Shape(pygame.sprite.Group):
 
     def __init__(self, scaler):
         super().__init__()
-        for pos in self.shapes[random.randint(1, 7)]:
+        for pos in self.shapes[randint(1, 7)]:
             self.add(Primitive(vec(pos), scaler))
 
     def get_move_position(self, pos):
